@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Card Designer</title>
+    <!-- Include jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        #birthdayCard {
+            width: 600px;
+            height: 600px;
+            border: 2px solid black;
+            padding: 20px;
+            box-sizing: border-box;
+            margin: 50px auto;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        #birthdayCard img {
+            max-width: 300%;
+            max-height: 300px; /* Adjust the max-height as needed */
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Birthday Card Designer</h1>
+
+    <label for="backgroundColor">Choose Background Color:</label>
+    <select id="backgroundColor">
+        <option value="#ffffff">White</option>
+        <option value="#ffcccb">Pink</option>
+        <option value="#add8e6">Light Blue</option>
+        <option value="#ffd700">Gold</option>
+    </select>
+
+    <br>
+
+    <label for="font">Choose Font:</label>
+    <select id="font">
+        <option value="Arial, sans-serif">Arial</option>
+        <option value="Georgia, serif">Georgia</option>
+        <option value="'Times New Roman', serif">Times New Roman</option>
+        <option value="'Courier New', monospace">Courier New</option>
+    </select>
+
+    <br>
+
+    <label for="borderStyle">Choose Border Style:</label>
+    <input type="radio" id="none" name="borderStyle" value="none"> None
+    <input type="radio" id="double" name="borderStyle" value="double"> Double
+    <input type="radio" id="standard" name="borderStyle" value="2px solid black" checked> Standard
+
+    <br>
+
+    <label for="defaultPicture">Add Default Picture:</label>
+    <input type="checkbox" id="defaultPicture">
+
+    <br>
+
+    <label for="greetingText">Enter Greeting Text:</label>
+    <input type="text" id="greetingText" placeholder="Happy Birthday!">
+
+    <br>
+
+    <button id="update">Update</button>
+
+    <div id="birthdayCard">
+        <p id="cardContent">HAPPY BIRTHDAY</p>
+    </div>
+
+    <script>
+        // jQuery document ready function
+        $(document).ready(function() {
+            // Event handler for the Update button
+            $("#update").click(function() {
+                updateCard();
+            });
+        });
+
+        // Function to update the birthday card based on selected options
+        function updateCard() {
+            var backgroundColor = $("#backgroundColor").val();
+            var font = $("#font").val();
+            var borderStyle = $("input[name='borderStyle']:checked").val();
+            var defaultPicture = $("#defaultPicture").prop("checked");
+            var greetingText = $("#greetingText").val();
+
+            // Update card style
+            $("#birthdayCard").css({
+                "background-color": backgroundColor,
+                "border": borderStyle,
+                "font-family": font
+            });
+
+            // Update card content
+            var cardContent = "HAPPY BIRTHDAY SEEYUHHHHHH";
+            if (defaultPicture) {
+                cardContent += "<br><img src='carti.jpg' alt='Default Picture'>";
+            }
+            if (greetingText) {
+                cardContent += "<br>" + greetingText;
+            }
+            $("#cardContent").html(cardContent);
+        }
+    </script>
+
+</body>
+</html>

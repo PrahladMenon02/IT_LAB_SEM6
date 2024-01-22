@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table and Image Animation</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .even-row {
+            background-color: #e6f7ff;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#moveButton").click(function () {
+                // Move table and image to the left
+                $("#table-container, #image-container").animate({
+                    marginLeft: "-150%"
+                }, 1000);
+            });
+        });
+    </script>
+</head>
+<body>
+
+<div id="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Header 1</th>
+                <th>Header 2</th>
+                <th>Header 3</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="even-row">X</td>
+                <td>O</td>
+                <td class="even-row">O</td>
+            </tr>
+            <tr>
+                <td>O</td>
+                <td class="even-row">X</td>
+                <td>O</td>
+            </tr>
+            <tr>
+                <td class="even-row">O</td>
+                <td>O</td>
+                <td class="even-row">X</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="image-container">
+    <img src="https://via.placeholder.com/200x200" alt="Your Image">
+</div>
+
+<button id="moveButton">Move Left</button>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 40%;
+}
+td, th {
+  border: 1px solid #000000;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #bceff6;
+}
+tr:nth-child(odd){
+	background-color: #f6edbc ;
+}
+</style>
+	<title>Q1</title>
+	<script type = "text/javascript" src = "jquery-3.7.1.min.js"></script>
+<script> 
+$(document).ready(function(){
+  $("button").click(function(){
+    $("img").animate({left: '1000px'});
+    $("table").animate({left: '1000px'});
+  });
+});
+</script> 
+</head>
+<body>
+<table style="position: relative;">
+  <tr>
+    <th>Company</th>
+    <th>Contact</th>
+    <th>Country</th>
+  </tr>
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>Mexico</td>
+  </tr>
+  <tr>
+    <td>Ernst Handel</td>
+    <td>Roland Mendel</td>
+    <td>Austria</td>
+  </tr>
+</table> 
+<img src="DarthVader.png" width ="500" height="300" style = "padding: 20px 10px 10px 10px;position: relative;">
+<br>
+<button>Start Animation</button>
+</body>
+</html>

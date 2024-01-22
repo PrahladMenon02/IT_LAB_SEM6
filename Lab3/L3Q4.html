@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Bill Generator</title>
+    <!-- Include jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        label, input, select, button {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Product Bill Generator</h1>
+    
+    <label for="brand">Select Brand:</label>
+    <select id="brand">
+        <option value="HP">HP</option>
+        <option value="Nokia">Nokia</option>
+        <option value="Samsung">Samsung</option>
+        <option value="Motorola">Motorola</option>
+        <option value="Apple">Apple</option>
+    </select>
+
+    <br>
+
+    <label for="category">Select Category:</label>
+    <input type="checkbox" id="mobile" value="Mobile">Mobile
+    <input type="checkbox" id="laptop" value="Laptop">Laptop
+
+    <br>
+
+    <label for="quantity">Enter Quantity:</label>
+    <input type="text" id="quantity" placeholder="Enter quantity">
+
+    <br>
+
+    <button id="produceBill">Produce Bill</button>
+
+    <script>
+        // jQuery document ready function
+        $(document).ready(function() {
+            // Event handler for the Produce Bill button
+            $("#produceBill").click(function() {
+                calculateBill();
+            });
+        });
+
+        // Function to calculate the total amount based on selected items and quantity
+        function calculateBill() {
+            var brand = $("#brand").val();
+            var mobileChecked = $("#mobile").prop("checked");
+            var laptopChecked = $("#laptop").prop("checked");
+            var quantity = parseInt($("#quantity").val());
+
+            // Check if quantity is a valid number
+            if (isNaN(quantity) || quantity <= 0) {
+                alert("Please enter a valid quantity.");
+                return;
+            }
+
+            var totalAmount = 0;
+
+            // Calculate total amount based on selected items
+            if (mobileChecked) {
+                // Assuming the mobile price is 5000 for demonstration purposes
+                totalAmount += 5000 * quantity;
+            }
+
+            if (laptopChecked) {
+                // Assuming the laptop price is 30000 for demonstration purposes
+                totalAmount += 30000 * quantity;
+            }
+
+            // Display the total amount in an alert
+            alert("Brand: " + brand + "\nTotal Amount: $" + totalAmount.toFixed(2));
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <!-- Include jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        input, button {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Calculator</h1>
+    
+    <label for="equation">Equation:</label>
+    <input type="text" id="equation" placeholder="Enter equation">
+
+    <br>
+
+    <button id="calculate">Calculate</button>
+
+    <br>
+
+    <label for="result">Result:</label>
+    <input type="text" id="result" readonly>
+
+    <script>
+        // jQuery document ready function
+        $(document).ready(function() {
+            // Event handler for the Calculate button
+            $("#calculate").click(function() {
+                calculate();
+            });
+        });
+
+        // Function to perform the calculation based on the entered equation
+        function calculate() {
+            var equation = $("#equation").val();
+
+            // Check if the equation is empty
+            if (!equation.trim()) {
+                alert("Please enter a valid equation.");
+                return;
+            }
+
+            try {
+                // Use eval to evaluate the equation
+                var result = eval(equation);
+                // Display the result
+                $("#result").val(result);
+            } catch (error) {
+                // Handle invalid equations or errors
+                alert("Invalid equation. Please enter a valid mathematical expression.");
+            }
+        }
+    </script>
+
+</body>
+</html>
