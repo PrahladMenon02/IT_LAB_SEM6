@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Element Position</title>
+    <style>
+        /* Styling for the target element */
+        #targetElement {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Target element to get position -->
+<div id="targetElement"></div>
+
+<script>
+    // JavaScript function to get the position of the element and display it in a popup
+    function getElementPosition() {
+        // Get the target element by its ID
+        var element = document.getElementById('targetElement');
+        
+        // Use getBoundingClientRect() to get position relative to viewport
+        var position = element.getBoundingClientRect();
+
+        // Display the position information in a popup
+        alert('Element Position:\nTop: ' + position.top + '\nLeft: ' + position.left + '\nBottom: ' + position.bottom + '\nRight: ' + position.right);
+    }
+
+    // Call the function when the window is loaded
+    window.onload = getElementPosition;
+</script>
+
+</body>
+</html>

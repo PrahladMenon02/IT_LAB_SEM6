@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    #ball {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-color: red;
+      border-radius: 50%;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-calc(50vh - 25px));
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="ball"></div>
+
+  <script>
+    const ball = document.getElementById('ball');
+
+    // You can add more properties or adjust the values as needed
+    const ballProperties = {
+      initialTop: 0,
+      initialLeft: 0,
+      speed: 7,
+    };
+
+    ball.style.top = `${ballProperties.initialTop}px`;
+    ball.style.left = `${ballProperties.initialLeft}px`;
+
+    function updateBallPosition() {
+      const currentTop = parseInt(ball.style.top);
+      const newTop = currentTop + ballProperties.speed;
+
+      if (newTop + ball.clientHeight > window.innerHeight || newTop < 0) {
+        ballProperties.speed = -ballProperties.speed;
+      }
+
+      ball.style.top = `${newTop}px`;
+      requestAnimationFrame(updateBallPosition);
+    }
+
+    updateBallPosition();
+  </script>
+</body>
+</html>

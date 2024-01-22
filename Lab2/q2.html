@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Greetings and Clock</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        #clock {
+            font-size: 2em;
+            color: #333;
+        }
+
+        #greeting {
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="clock"></div>
+<div id="greeting"></div>
+
+<script>
+    function updateClock() {
+        var now = new Date();
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+        var seconds = now.getSeconds();
+
+        // Format minutes and seconds to have leading zeros
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+
+        var timeString = hours + ':' + minutes + ':' + seconds;
+
+        // Update the clock element
+        document.getElementById('clock').textContent = timeString;
+
+        // Choose a greeting based on the time of day
+        var greeting;
+        if (hours < 12) {
+            greeting = 'Good morning!';
+        } else if (hours < 18) {
+            greeting = 'Good afternoon!';
+        } else {
+            greeting = 'Good evening!';
+        }
+
+        // Update the greeting element
+        document.getElementById('greeting').textContent = greeting;
+    }
+
+    // Call the updateClock function every second
+    setInterval(updateClock, 1000);
+
+    // Call the function when the window is loaded to initially set the clock and greeting
+    window.onload = updateClock;
+</script>
+
+</body>
+</html>

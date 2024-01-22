@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rain Animation</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="rainCanvas"></canvas>
+
+<script>
+    // Get the canvas element and its context
+    var canvas = document.getElementById('rainCanvas');
+    var ctx = canvas.getContext('2d');
+
+    // Set canvas size to cover the entire window
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // Create an array to store raindrop objects
+    var raindrops = [];
+
+    // Function to generate random number within a range
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    // Raindrop class
+    function Raindrop() {
+        this.x = getRandomInt(0, canvas.width);
+        this.y = getRandomInt(0, canvas.height);
+        this.length = getRandomInt(5, 15);
+        this.speed = getRandomInt(5, 15);
+
+        this.fall = function () {
+            this.y += this.speed;
+
+            // Reset raindrop if it goes below the canvas
+            if (this.y > canvas.height) {
+                this.y = 0;
+                this.x = getRandomInt(0, canvas.width);
+            }
+        };
+
+        this.draw = function () {
+            ctx.beginPath();
+            ctx.moveTo(this.x, this.y);
+            ctx.lineTo(this.x, this.y + this.length);
+            ctx.strokeStyle = '#00F'; // Blue color
+            ctx.lineWidth = 2;
+            ctx.stroke();
+        };
+    }
+
+    // Create initial raindrop objects
+    for (var i = 0; i < 100; i++) {
+        raindrops.push(new Raindrop());
+    }
+
+    // Animation loop
+    function animate() {
+        // Clear the canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Update and draw each raindrop
+        for (var i = 0; i < raindrops.length; i++) {
+            raindrops[i].fall();
+            raindrops[i].draw();
+        }
+
+        // Request the next animation frame
+        requestAnimationFrame(animate);
+    }
+
+    // Start the animation loop
+    animate();
+</script>
+
+</body>
+</html>
