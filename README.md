@@ -1,1 +1,1 @@
-# IT_LAB_SEM6
+Codes for Internet Technologies Lab (Semester 6 at MIT Manipal)
