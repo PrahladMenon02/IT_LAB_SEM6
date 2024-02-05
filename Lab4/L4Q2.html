@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Management</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+    th, td {
+      padding: 12px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    button {
+      padding: 8px 12px;
+      margin: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Employee Management</h2>
+
+<!-- Table to display employee data -->
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Position</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody id="employeeTableBody">
+    <!-- Employee data will be dynamically populated here -->
+  </tbody>
+</table>
+
+<!-- Form for adding/editing employee -->
+<form id="employeeForm">
+  <label for="name">Name:</label>
+  <input type="text" id="name" required>
+  
+  <label for="position">Position:</label>
+  <input type="text" id="position" required>
+
+  <button type="button" onclick="addOrUpdateEmployee()">Save</button>
+  <button type="button" onclick="clearForm()">Clear</button>
+</form>
+
+<script>
+  // Array of objects to store employee data
+  let employees = [
+    { id: 1, name: "John Doe", position: "Manager" },
+    { id: 2, name: "Jane Smith", position: "Developer" },
+    // Add more employees as needed
+  ];
+
+  // Function to display employees in the table
+  function displayEmployees() {
+    const tableBody = document.getElementById("employeeTableBody");
+    tableBody.innerHTML = "";
+
+    employees.forEach(employee => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${employee.id}</td>
+        <td>${employee.name}</td>
+        <td>${employee.position}</td>
+        <td>
+          <button onclick="editEmployee(${employee.id})">Edit</button>
+          <button onclick="deleteEmployee(${employee.id})">Delete</button>
+        </td>
+      `;
+      tableBody.appendChild(row);
+    });
+  }
+
+  // Function to add or update employee
+  function addOrUpdateEmployee() {
+    const nameInput = document.getElementById("name");
+    const positionInput = document.getElementById("position");
+
+    const name = nameInput.value;
+    const position = positionInput.value;
+
+    if (name && position) {
+      const employeeId = employees.length + 1;
+      const newEmployee = { id: employeeId, name, position };
+
+      // Check if editing or adding
+      const editingIndex = employees.findIndex(employee => employee.id === employeeId);
+      if (editingIndex !== -1) {
+        employees[editingIndex] = newEmployee; // Update existing employee
+      } else {
+        employees.push(newEmployee); // Add new employee
+      }
+
+      displayEmployees(); // Refresh table
+      clearForm(); // Clear form inputs
+    }
+  }
+
+  // Function to edit employee
+  function editEmployee(employeeId) {
+    const employee = employees.find(employee => employee.id === employeeId);
+    if (employee) {
+      const nameInput = document.getElementById("name");
+      const positionInput = document.getElementById("position");
+
+      nameInput.value = employee.name;
+      positionInput.value = employee.position;
+    }
+  }
+
+  // Function to delete employee
+  function deleteEmployee(employeeId) {
+    employees = employees.filter(employee => employee.id !== employeeId);
+    displayEmployees(); // Refresh table
+  }
+
+  // Function to clear form inputs
+  function clearForm() {
+    const nameInput = document.getElementById("name");
+    const positionInput = document.getElementById("position");
+
+    nameInput.value = "";
+    positionInput.value = "";
+  }
+
+  // Initial display of employees
+  displayEmployees();
+</script>
+
+</body>
+</html>

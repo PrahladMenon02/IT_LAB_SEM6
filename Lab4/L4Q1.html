@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <title>Student Bio-Data Form</title>
+</head>
+<body>
+
+<div class="container mt-5">
+  <form>
+    <!-- Form Title -->
+    <h2>Student Bio-Data Form</h2>
+    
+    <!-- Personal Information Section -->
+    <div class="form-group">
+      <!-- Label and Textbox for First Name -->
+      <label for="firstName">First Name:</label>
+      <input type="text" class="form-control" id="firstName" placeholder="Enter first name">
+    </div>
+
+    <div class="form-group">
+      <!-- Label and Textbox for Last Name -->
+      <label for="lastName">Last Name:</label>
+      <input type="text" class="form-control" id="lastName" placeholder="Enter last name">
+    </div>
+
+    <div class="form-group">
+      <!-- Label and Radio Buttons for Gender -->
+      <label>Gender:</label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="gender" id="male" value="male">
+        <label class="form-check-label" for="male">Male</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+        <label class="form-check-label" for="female">Female</label>
+      </div>
+    </div>
+
+    <!-- Contact Information Section -->
+    <div class="form-group">
+      <!-- Label and Textbox for Email -->
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email">
+    </div>
+
+    <div class="form-group">
+      <!-- Label and Textbox for Phone -->
+      <label for="phone">Phone:</label>
+      <input type="text" class="form-control" id="phone" placeholder="Enter phone number">
+    </div>
+
+    <!-- Academic Information Section -->
+    <div class="form-group">
+      <!-- Label and Textbox for Major -->
+      <label for="major">Major:</label>
+      <input type="text" class="form-control" id="major" placeholder="Enter major">
+    </div>
+
+    <div class="form-group">
+      <!-- Label and Dropdown for Grade -->
+      <label for="grade">Grade:</label>
+      <select class="form-control" id="grade">
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+      </select>
+    </div>
+
+    <!-- Skills Section -->
+    <div class="form-group">
+      <!-- Label and Checkboxes for Skills -->
+      <label>Skills:</label>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="programming" value="programming">
+        <label class="form-check-label" for="programming">Programming</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="design" value="design">
+        <label class="form-check-label" for="design">Design</label>
+      </div>
+    </div>
+
+    <!-- Save Button -->
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
+</div>
+
+<!-- Bootstrap JS and Popper.js -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>
